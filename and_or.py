@@ -11,32 +11,6 @@ suck_retults_dict = {
     (1, (0, 0)) : [(1, (0, 0)), (1, (0, 1))]    
 }
 
-class PlanNode:
-    def __init__(self, action, children=None):
-        self.action = action
-        self.children = children if children is not None else []
-
-    def __repr__(self, level=0):
-        indent = '  ' * level
-        result = indent + self.action + '\n'
-        for child in self.children:
-            result += child.__repr__(level + 1)
-        return result
-
-def create_plan_tree(plan):
-    if not plan:
-        return []
-
-    action = plan[0]
-    children = []
-
-    for subplans in plan[1:]:
-        for subplan in subplans:
-            children += create_plan_tree(subplan)
-
-    return [PlanNode(action, children)]
-
-
 class ErraticVacuumWorld:
     def __init__(self, state):
         self.state = state

@@ -33,7 +33,7 @@ class ErraticVacuumWorld:
 def AndOrGraphSearch(problem):
     def OrSearch(state, problem, path):
         if problem.goal_test(state):
-            return []
+            return ['return']
 
         #Is cycle
         if state in path:
@@ -102,9 +102,12 @@ Cyclic solution
     ('if', (0, (0, 1)), 'then', 
         [['While Right', 
             ('if', (1, (0, 1)), 'then', 
-                [['Suck', ('if', (1, (0, 0)), 'then', [])]])]]), 
+                [['Suck', 
+                    ('if', (1, (0, 0)), 'then', 
+                        ['return'])]])]]), 
 
-    ('if', (0, (0, 0)), 'then', [])], 
+    ('if', (0, (0, 0)), 'then', 
+        ['return'])], 
 
 ['While Right', 
     ('if', (1, (1, 1)), 'then', 
@@ -113,7 +116,9 @@ Cyclic solution
                 [['While Left', 
                     ('if', (0, (1, 0)), 'then', 
                         [['Suck', 
-                            ('if', (0, (0, 0)), 'then', [])]])]]),
+                            ('if', (0, (0, 0)), 'then', 
+                                ['return'])]])]]), 
 
-            ('if', (1, (0, 0)), 'then', [])]])]]
+            ('if', (1, (0, 0)), 'then', 
+                ['return'])]])]]
 """

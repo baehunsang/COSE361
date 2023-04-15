@@ -44,7 +44,7 @@ class ErraticVacuumWorld:
     def actions(self):
         return ['Suck', 'Left', 'Right']
 
-    #Assumption : Suck operation could be fail but directional operation don't fail
+    
     def result(self, state, action):
         if action == 'Suck':
             return suck_retults_dict[state]
